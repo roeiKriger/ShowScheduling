@@ -27,7 +27,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /*
- * Create by: Matan Mayerowicz & Roei Kriger
+ * Created by: Matan Mayerowicz & Roei Kriger
  */
 public class Main extends Application {
 
