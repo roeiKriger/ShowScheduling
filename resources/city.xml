@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<City_info>
+	<city>
+		<cityName>Haifa</cityName>
+		<colorName>Red</colorName>
+		<maxInTheater>1</maxInTheater>
+		<maxInCapsule>1</maxInCapsule></city>
+	<city>
+		<cityName>TelAviv</cityName>
+		<colorName>Yellow</colorName>
+		<maxInTheater>50</maxInTheater>
+		<maxInCapsule>10</maxInCapsule></city>
+	<city>
+		<cityName>HodHasharon</cityName>
+		<colorName>Green</colorName>
+		<maxInTheater>70</maxInTheater>
+		<maxInCapsule>20</maxInCapsule></city>
+	<city>
+		<cityName>Natanya</cityName>
+		<colorName>Yellow</colorName>
+		<maxInTheater>50</maxInTheater>
+		<maxInCapsule>10</maxInCapsule></city>
+	<city>
+		<cityName>Lod</cityName>
+		<colorName>Red</colorName>
+		<maxInTheater>1</maxInTheater>
+		<maxInCapsule>1</maxInCapsule></city>
+</City_info>

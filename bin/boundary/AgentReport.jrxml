@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AgentReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5f54182-819b-4f7d-a61f-0257e0213a51">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="UCA_WORKS"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<subDataset name="Dataset1" uuid="64793d71-1f35-4677-b62f-b74ae078ef2b">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="UCA"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT tb_artist.*
+FROM tb_artist]]>
+		</queryString>
+		<field name="artistId" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="artistId"/>
+			<property name="com.jaspersoft.studio.field.label" value="artistId"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_artist"/>
+		</field>
+		<field name="artistName" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="artistName"/>
+			<property name="com.jaspersoft.studio.field.label" value="artistName"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_artist"/>
+		</field>
+		<field name="janer" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="janer"/>
+			<property name="com.jaspersoft.studio.field.label" value="janer"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_artist"/>
+		</field>
+		<field name="agentId" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="agentId"/>
+			<property name="com.jaspersoft.studio.field.label" value="agentId"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tb_artist"/>
+		</field>
+	</subDataset>
+	<parameter name="agent_id" class="java.lang.Integer"/>
+	<parameter name="start" class="java.sql.Date"/>
+	<parameter name="end" class="java.sql.Date"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT tbl_theater.theaterName, tbl_city.cityName, tbl_agent.agentId, tbl_show_theater.dateOfShow, tbl_show.showName, tb_artist.artistName, tbl_show.showId
+FROM (tbl_city INNER JOIN tbl_theater ON tbl_city.cityId = tbl_theater.cityId) INNER JOIN ((tbl_show INNER JOIN (tbl_agent INNER JOIN (tb_artist INNER JOIN tbl_artists_in_shows ON tb_artist.artistId = tbl_artists_in_shows.artistId) ON tbl_agent.agentId = tb_artist.agentId) ON tbl_show.showId = tbl_artists_in_shows.showId) INNER JOIN tbl_show_theater ON tbl_show.showId = tbl_show_theater.showID) ON tbl_theater.theaterId = tbl_show_theater.theaterID
+WHERE tbl_agent.agentId=$P{agent_id} And tbl_show_theater.dateOfShow>=$P{start} AND  tbl_show_theater.dateOfShow<=$P{end}
+ORDER BY tbl_theater.theaterName, tbl_show_theater.dateOfShow]]>
+	</queryString>
+	<field name="THEATERNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="THEATERNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="THEATERNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="CITYNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CITYNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CITYNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="AGENTID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="AGENTID"/>
+		<property name="com.jaspersoft.studio.field.label" value="AGENTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="DATEOFSHOW" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="DATEOFSHOW"/>
+		<property name="com.jaspersoft.studio.field.label" value="DATEOFSHOW"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="SHOWNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SHOWNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SHOWNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="ARTISTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ARTISTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="ARTISTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="SHOWID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SHOWID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SHOWID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SYSTEM_SUBQUERY"/>
+	</field>
+	<field name="Percent" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="10" width="100" height="30" uuid="444d5a29-fec4-4b74-9dcd-5a3cac1a4b1c"/>
+				<textElement>
+					<font fontName="Segoe UI Historic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="30" width="450" height="60" uuid="a05ca7ae-99a5-45bc-af03-ca7082403aca"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Historic" size="34" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Artists Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="0" width="100" height="21" uuid="c60a54be-ae7a-4e8a-8add-454123b3fac1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4af43f37-7d01-47cf-b6e4-b11ea5a56917"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THEATER NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="0" width="100" height="20" uuid="b7b68171-b5b8-455e-96f6-768ba1f3c7b3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f00565a4-34ba-47db-96bd-d5bd0d01b204"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CITY NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="-1" width="100" height="18" uuid="b83861d8-ae2a-48b2-ad97-3dcba13bb4a4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4ebcb370-4a92-4733-b553-8e5d18e1ac62"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE OF SHOW]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="0" width="100" height="20" uuid="873b25e9-5835-436d-babc-ba078a9cfab0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d9e91d4-544c-4dbf-8aa5-5a7358e9078b"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHOW NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="0" width="100" height="21" uuid="ec7087bd-09ba-4be3-87e6-1b6eccc5e094">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5dfb46a1-c46e-4251-b2b3-c97f4fb77d44"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Percent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="507" y="0" width="100" height="21" uuid="a56cfecb-87fe-4b81-98cf-9aadbf528e43">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a2a2f2d4-9489-4911-bdd9-b9633746052e"/>
+				</reportElement>
+				<text><![CDATA[Percent]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField>
+				<reportElement x="6" y="1" width="100" height="18" uuid="6514c2a9-fdda-421d-ba8f-fdf75941c879">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4af43f37-7d01-47cf-b6e4-b11ea5a56917"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THEATERNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="1" width="100" height="18" uuid="d47c4524-3db4-484c-84a8-784b50282cf0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f00565a4-34ba-47db-96bd-d5bd0d01b204"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CITYNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="0" width="100" height="18" uuid="c2320509-e61d-445c-bab7-6d8fdb5cda33">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4ebcb370-4a92-4733-b553-8e5d18e1ac62"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATEOFSHOW}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="100" height="20" uuid="809bc44d-00ac-4299-8583-b043f481bbba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d9e91d4-544c-4dbf-8aa5-5a7358e9078b"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SHOWNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="0" width="100" height="18" uuid="3430b434-deef-4384-befd-c4a99f264603">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a2a2f2d4-9489-4911-bdd9-b9633746052e"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Segoe UI Historic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Percent}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
