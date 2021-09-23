@@ -52,7 +52,7 @@ public class ControlShow
 	}
 	
 	
-	//this method get show and return array of dates that show is showing
+	//this method get a show and returns an array of dates of this specific show
 	public ArrayList<Date> getDatesOfShow(Show sh) 
 	{
 		ArrayList<Date> datesList = new ArrayList<Date>();
@@ -408,8 +408,7 @@ public class ControlShow
 	
 	/*  SQL_ARTIST_BY_SHOW_ID  */
 
-	public int getArtistToShowCounter(int showId) {
-		//ArrayList<Integer> ArtistListId = new ArrayList<Integer>();
+	public int getArtistToShowCounter(int showId) {		
 		int num = 0;
 		try {
 			Class.forName(Consts.JDBC_STR);
